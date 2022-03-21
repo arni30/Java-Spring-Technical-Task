@@ -18,7 +18,6 @@ public class Validator {
 
     public static void validateAmount(BigDecimal amount) throws Exception {
         System.out.println(amount);
-//        System.out.println(amount.compareTo(new BigDecimal(0)));
         if (amount == null || amount.compareTo(new BigDecimal(0)) <= 0)
             throw new Exception("amount should be more than 0");
     }

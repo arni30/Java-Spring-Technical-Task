@@ -7,9 +7,12 @@ import task.javaspringtechnicaltask.models.dao.Account;
 
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
+
     boolean existsByNameAndSurname(String name, String surname);
+
     @Query("select acc from Account acc where acc.name=:name and acc.surname=:surname")
     Account findByNameAndSurname(String name, String surname);
+
     default Account findAccountByNameAndSurname(String name, String surname) throws Exception {
         Account account = findByNameAndSurname(name, surname);
         if (account == null)
@@ -23,4 +26,5 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
         else throw new Exception("Account with name= " + name +
                 " and surname= " + surname + " already exists");
     }
+    
 }
